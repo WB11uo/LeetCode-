@@ -1,1 +1,1 @@
-# LeetCodeWeekly Contest
+# LeetCodeWeeklyContest
