@@ -1,0 +1,30 @@
+// Prim算法
+
+class Solution {
+    public int minCostConnectPoints(int[][] points) {
+        int n=points.length;
+        int[] dist=new int[n];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        boolean[] added=new boolean[n];
+        int ans=0;
+        for(int i=0; i<n; i++){
+            int min=0;
+            for(int j=0; j<n; j++){
+                if(!added[j]&&dist[j]<dist[min]){
+                    min=j;
+                }
+            }
+            added[min]=true;
+            if(dist[min]!=Integer.MAX_VALUE) ans+=dist[min];
+            for(int j=0; j<n; j++){
+                if(!added[j]){
+                    dist[j]=Math.min(dist[j], mdist(points[min], points[j]));
+                }
+            }
+        }
+        return ans;
+    }
+    int mdist(int[] x, int[] y){
+        return Math.abs(x[0]-y[0])+Math.abs(x[1]-y[1]);
+    }
+}
